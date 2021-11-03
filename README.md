@@ -25,6 +25,7 @@ Conexão com o banco de dados e inicialização do Mongo com o mongoose (ORM de 
 const mongoose = require('mongoose')
 main().catch(err => console.log(err))
 async function main() {
+  // Essa url vem do cluster do Mongo. Criado no site, é uma hospedagem gratuita temporária do Mongo! (https://cloud.mongodb.com/v2/6182974e71064e34af74755a#clusters/connect?clusterId=TournamentManager)
   await mongoose.connect('mongodb+srv://tm:tm@tournamentmanager.1mtiw.mongodb.net/tm?retryWrites=true&w=majority');
 }
 ```
