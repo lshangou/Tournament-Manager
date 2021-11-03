@@ -9,11 +9,15 @@ npm install
 npm start
 ```
 
-# Documentação
+## Documentação
 
-## Arquivo Index
+Documentação do Projeto
 
-Importação do Express + Definição de porta:
+### Arquivo Index
+
+Importação do Express (Framework pra desenvolvimento Web em node) + Definição de porta:
+
+Link da documentação do Express: <https://expressjs.com/en/4x/api.html>
 
 ```js
 const express = require('express')
@@ -22,6 +26,8 @@ const port = 3000
 ```
 
 Conexão com o banco de dados e inicialização do Mongo com o mongoose (ORM de auxilio do mongo no JS):
+
+Link da documentação do Mongoose: <https://mongoosejs.com/docs>
 
 ```js
 const mongoose = require('mongoose')
@@ -58,8 +64,8 @@ app.listen(port, () => {
 })
 ```
 
+### Criando um Model
 
-## Criando um Model
 Primeiro, um arquivo com o nome do model (Com a primeira letra maiuscula por convenção) deve ser adicional na pasta "models". Em seguida, o seu código deve segir o seguinte padrão:
 
 ```js
