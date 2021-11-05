@@ -17,6 +17,7 @@ const Torneio = require ('./models/Torneio')
 // const playstation = new Plataforma({nome: 'Playstation', jogos:['Tekken 7, Fortnite']})
 // playstation.save()
 // console.log(playstation.nome)
+
 const existingModels = {
   Equipe,
   Jogador,
@@ -24,6 +25,10 @@ const existingModels = {
   Plataforma,
   Torneio
 }
+
+app.get('/', (req, res) => {
+  res.sendFile('./linkList.html', {root: __dirname })
+})
 
 app.get('/:resource', (req, res) => {
   let resources = existingModels[req.params.resource].find({}, function(err, docs) {

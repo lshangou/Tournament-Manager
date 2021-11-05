@@ -43,9 +43,9 @@ Importação do Plataforma.js para utilizar o Model:
 ```js
 const Plataforma = require('./models/Plataforma')
 
-const playstation = new Plataforma({nome: 'Playstation'})
+const playstation = new Plataforma({nome: 'Playstation', jogos:['Tekken 7, Fortnite']})
 playstation.save()
-console.log(playstation.nome)
+// console.log(playstation.nome)
 ```
 
 Rota de Exemplo:
