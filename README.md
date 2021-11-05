@@ -1,6 +1,6 @@
 # Projeto TM
 
-Projeto criado por Adler, Léo, Lucas e Melissa. É uma aplicação para gerenciamento de futuros torneios de jogos. Criado para atividade de Desenvolvimento Back-End | Cotemig
+Projeto criado por Adler Ferreira, Leonardo Dias, Lucas Menezes e Melissa Lara. É uma aplicação para gerenciamento de futuros torneios de jogos. Criado para atividade de Desenvolvimento Back-End | Cotemig
 
 ## Iniciando o Projeto
 
