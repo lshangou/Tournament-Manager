@@ -8,6 +8,7 @@ async function main() {
   await mongoose.connect('mongodb+srv://tm:tm@tournamentmanager.1mtiw.mongodb.net/tm?retryWrites=true&w=majority');
 }
 
+// Importação temporária para testes
 const Equipe = require ('./models/Equipe')
 const Jogador = require ('./models/Jogador')
 const Jogo = require ('./models/Jogo')
@@ -18,6 +19,7 @@ const Torneio = require ('./models/Torneio')
 // playstation.save()
 // console.log(playstation.nome)
 
+// Objeto de referência para usar na rota de recurso temporária
 const existingModels = {
   Equipe,
   Jogador,
@@ -26,10 +28,12 @@ const existingModels = {
   Torneio
 }
 
+// Rota temporária para árvore de links
 app.get('/', (req, res) => {
   res.sendFile('./linkList.html', {root: __dirname })
 })
 
+// Rota para receber recurso temporária para testes
 app.get('/:resource', (req, res) => {
   let resources = existingModels[req.params.resource].find({}, function(err, docs) {
     res.send(docs)
