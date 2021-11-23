@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const bodyParser = require('body-parser')
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true, limit: "2mb"})) // for parsing application/x-www-form-urlencoded
 
 const mongoose = require('mongoose')
 main().catch(err => console.log(err))
@@ -27,18 +30,32 @@ const existingModels = {
   Plataforma,
   Torneio
 }
+const plataformaController = require('./controllers/PlataformaController')
 
 // Rota temporária para árvore de links
 app.get('/', (req, res) => {
   res.sendFile('./linkList.html', {root: __dirname })
 })
 
-// Rota para receber recurso temporária para testes
-app.get('/:resource', (req, res) => {
-  let resources = existingModels[req.params.resource].find({}, function(err, docs) {
-    res.send(docs)
-  })
+//! Rota para receber recurso temporária para testes
+// app.get('/:resource', (req, res) => {
+//   let resources = existingModels[req.params.resource].find({}, function(err, docs) {
+//     res.send(docs)
+//   })
+// })
+
+
+// Plataforma CRUD
+// CREATE
+app.post('/plataformas', (req, res) => {
+  plataformaController.create(req, res)
 })
+// READ
+app.get('/plataformas', (req, res) => {
+  plataformaController.readAll(req, res)
+})
+// Continuar daqui...
+
 
 app.listen(port, () => {
   console.log('Tournament Manager aberto e escutando em http://localhost:' + port)
