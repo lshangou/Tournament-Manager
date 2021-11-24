@@ -167,3 +167,48 @@ const plataformaController = {
 module.exports = plataformaController
 ```
 
+### Criando uma View
+
+Para criar visualizações para o usuário, você deve criar um arquivo .ejs na pasta 'views'.
+Este arquivo vai funcionar com HTML normalmente, e utiliza das regras da extenção EJS para integrar SSR
+
+Lembre-se de adicionar uma rota que leva a esta view.
+Exemplo de View:
+
+```html
+<!-- Adiciona um include do header -->
+<%- include('./includes/header.ejs', {title: 'Sobre'}) %>
+<!-- HTML comum -->
+<main class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h3>Sobre o Trabalho</h3>
+      <p>
+        Trabalho de Desenvolvimento Back-End
+        <br>
+        <a target="_blank" href="https://github.com/lshangou/Tournament-Manager">GitHub do Projeto</a>
+      </p>
+      <p>Integrantes do Grupo</p>
+      <ul>
+        <li>Adler Ferreira</li>
+        <li>Leonardo Dias</li>
+        <li>Lucas Menezes</li>
+        <li>Melissa Lara</li>
+      </ul>
+      <hr>
+      <p><b>Professor:</b> LUCAS SCHMIDT CORREA FRANCO</p>
+      <h6>Cotemig - 2021</h6>
+    </div>
+  </div>
+</main>
+<%- include('./includes/footer.ejs') %>
+```
+
+Exemplo de Rota para a view
+
+```js
+// About
+app.get('/about', (req, res) => {
+  res.render('about')
+})
+```
