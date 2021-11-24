@@ -56,6 +56,13 @@ app.get('/', (req, res) => {
 })
 ```
 
+Rota utilizando Service:
+
+```js
+const plataformaService = require('./models/PlataformaService');
+plataformaService.register(router, '/plataforma');
+```
+
 Rota utilizando Controller:
 
 ```js
@@ -82,11 +89,13 @@ app.listen(port, () => {
 
 ### Criando um Model
 
-Primeiro, um arquivo com o nome do model (Com a primeira letra maiuscula por convenção) deve ser adicional na pasta "models". Em seguida, o seu código deve segir o seguinte padrão:
+Primeiro, um arquivo com o nome do model (Com a primeira letra maiuscula por convenção) deve ser adicional na pasta "models". Em seguida, o seu código deve segir o seguinte padrão (Atualizado para usar node-restful. Funciona normalmente com mongoose pois o node-restful retorna o schema normalmente.):
 
 ```js
 // Importação do Mongoose nesse arquivo
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
+const restful = require('node-restful')
+const mongoose = restful.mongoose
 
 // Definição das suas propriedades através da função Schema
 const plataformaSchema = new mongoose.Schema({
@@ -94,9 +103,21 @@ const plataformaSchema = new mongoose.Schema({
 })
 
 // Definição do Model utilizando o Schema
-const Plataforma = mongoose.model('Plataforma', plataformaSchema)
+// const Plataforma = mongoose.model('Plataforma', plataformaSchema)
+const Plataforma = restful.model('Plataforma', plataformaSchema)
 
 // Exportação do Model para o restante do app poder importar.
+module.exports = Plataforma
+```
+
+### Criando um Service
+
+Criando um arquivo com o mesmo nome do model mas adicionando service, você pode criar as operações de CRUD padronizadas, utilizando o node-restful:
+
+```js
+const Plataforma = require('./Plataforma');
+Plataforma.methods(['get', 'post', 'put', 'delete']);
+Plataforma.updateOptions({new: true, runValidators: true});
 module.exports = Plataforma
 ```
 

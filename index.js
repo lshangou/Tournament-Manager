@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true, limit: "2mb"})) // for parsing application/x-www-form-urlencoded
 
+app.set('view engine', 'ejs');
+
 const mongoose = require('mongoose')
 main().catch(err => console.log(err))
 async function main() {
@@ -30,7 +32,6 @@ const existingModels = {
   Plataforma,
   Torneio
 }
-const plataformaController = require('./controllers/PlataformaController')
 
 // Rota temporária para árvore de links
 app.get('/', (req, res) => {
@@ -44,17 +45,8 @@ app.get('/', (req, res) => {
 //   })
 // })
 
-
-// Plataforma CRUD
-// CREATE
-app.post('/plataformas', (req, res) => {
-  plataformaController.create(req, res)
-})
-// READ
-app.get('/plataformas', (req, res) => {
-  plataformaController.readAll(req, res)
-})
-// Continuar daqui...
+const setRoutes = require('./routes')
+setRoutes(app)
 
 
 app.listen(port, () => {
