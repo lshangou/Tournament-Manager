@@ -2,8 +2,7 @@ const restful = require('node-restful')
 const mongoose = restful.mongoose
 
 const plataformaSchema = new mongoose.Schema({
-  nome: String,
-  jogos: Array
+  nome: { type: String, required: true },
 })
 
 const Plataforma = restful.model('Plataforma', plataformaSchema)

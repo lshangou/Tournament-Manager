@@ -1,16 +1,31 @@
+const Jogo = require('../models/Jogo')
 const Plataforma = require('../models/Plataforma')
 
 const plataformaController = {
-  readAll: function(req, res) {
+  readWithGames: function(req, res) {
+    let listaDePlataformas = []
+    let listaDeJogos = []
+    let listaDePlataformasComJogo = []
     Plataforma.find({}, function(err, docs) {
-      res.send(docs)
+      listaDePlataformas = docs
+      Jogo.find({}, function(err, docs) {
+        listaDeJogos = docs
+        listaDePlataformas.forEach(plataforma => {
+          let plataformaComJogo = {
+            id: plataforma._id,
+            nome: plataforma.nome,
+            jogos: []
+          }
+          listaDeJogos.forEach(jogo => {
+            if(jogo.plataforma_id == plataforma._id) {
+              plataformaComJogo.jogos.push(jogo)
+            }
+          })
+          listaDePlataformasComJogo.push(plataformaComJogo)
+        })
+        res.json(listaDePlataformasComJogo)
+      })
     })
-  },
-  create: function(req, res) {
-    const playstation = new Plataforma({nome: req.body.nome, jogos: req.body.jogos})
-    playstation.save()
-    console.log(playstation.nome)
-    res.json(playstation)
   }
 }
 

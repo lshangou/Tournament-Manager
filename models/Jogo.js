@@ -1,12 +1,10 @@
 const restful = require('node-restful')
 const mongoose = restful.mongoose
-// Id de Objeto do mongo, para fazer a ligação entre plataforma e jogo.
-const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const jogoSchema = new mongoose.Schema({
-  nome: String,
-  categoria: String,
-  plataforma_id: ObjectId
+  nome: { type: String, required: true },
+  categoria: { type: String, required: true },
+  plataforma_id: { type: String, required: true }
 })
 
 const Jogo = restful.model('Jogo', jogoSchema)
