@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
   res.sendFile('./linkList.html', {root: __dirname })
 })
 
-//! Rota para receber recurso temporária para testes
+// // ! Rota para receber recurso temporária para testes
 // app.get('/:resource', (req, res) => {
 //   let resources = existingModels[req.params.resource].find({}, function(err, docs) {
 //     res.send(docs)

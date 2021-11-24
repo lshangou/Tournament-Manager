@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+const restful = require('node-restful')
+const mongoose = restful.mongoose
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const torneioSchema = new mongoose.Schema({
@@ -9,6 +10,6 @@ const torneioSchema = new mongoose.Schema({
   jogadores: Array
 })
 
-const Torneio = mongoose.model('Torneio', torneioSchema)
+const Torneio = restful.model('Torneio', torneioSchema)
 
 module.exports = Torneio

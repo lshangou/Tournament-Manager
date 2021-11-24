@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+const restful = require('node-restful')
+const mongoose = restful.mongoose
 
 const equipeSchema = new mongoose.Schema({
   nome: String,
@@ -6,6 +7,6 @@ const equipeSchema = new mongoose.Schema({
   jogadores: Array
 })
 
-const Equipe = mongoose.model('Equipe', equipeSchema)
+const Equipe = restful.model('Equipe', equipeSchema)
 
 module.exports = Equipe
