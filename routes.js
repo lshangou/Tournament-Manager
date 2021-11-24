@@ -15,9 +15,29 @@ const setRoutes = function(app) {
     res.render('about')
   })
 
+  // View Equipe
+  app.get('/equipe_admin', (req, res) => {
+    res.render('equipe')
+  })
+
+  // View Jogador
+  app.get('/jogador_admin', (req, res) => {
+    res.render('jogador')
+  })
+
+  // View Jogo
+  app.get('/jogo_admin', (req, res) => {
+    res.render('jogo')
+  })
+
   // View Plataforma
   app.get('/plataforma_admin', (req, res) => {
     res.render('plataforma')
+  })
+
+  // View Torneio
+  app.get('/torneio_admin', (req, res) => {
+    res.render('torneio')
   })
 
   // Crud padrão com node-restful (usando services)
